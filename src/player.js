@@ -31,9 +31,9 @@ handleChange = (event) => {
     .then(async res => {
       // console.log(res.data.data)
       if(res.data.data[0] === undefined){
-        alert("This player is either injured or hasn't played yet!")
+        alert("This player hasn't played yet!")
       } else if(res.data.data.length > 1){
-        alert("Pleases specify the name more!")
+        alert("Pleases specify more!")
       } else{
         await this.getPlayerStats(res.data.data[0].id)
 
@@ -63,12 +63,11 @@ handleChange = (event) => {
           type="text"
           value={this.state.value}
           onChange={this.handleChange}
-          placeholder="please enter players name"
+          placeholder="Enter players name"
          />
        </label>
        <input type="submit" value="Submit"/>
      </form>
-     games played: {this.state.playerStats["games_played"]}
      <br />
      points averaged: {this.state.playerStats["pts"]}
      <br />
