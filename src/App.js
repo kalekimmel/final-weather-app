@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Search from "./components/CityLookUp/search";
-import CurrentWeather from "./components/WeatherComps/current-weather/current-weather";
-import Forecast from "./components/WeatherComps/forecast/forecast";
+import Search from "./components/CityLookUp/citySearch";
+import CurrentWeather from "./components/WeatherComps/DailyWeather/Dailyweather";
+import Forecast from "./components/WeatherComps/FutureForcecast/FutureForecast";
 import { WEATHER_API_URL, WEATHER_API_KEY } from "./api";
 import "./App.css";
 import Player from './player'
