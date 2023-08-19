@@ -8,53 +8,53 @@ import {
 } from "react-accessible-accordion";
 import "./forecast.css";
 
-const WEEK_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+const WEEK_DAYS_LIST = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
 const Forecast = ({ data }) => {
-  const dayInAWeek = new Date().getDay();
-  const forecastDays = WEEK_DAYS.slice(dayInAWeek, WEEK_DAYS.length).concat(WEEK_DAYS.slice(0, dayInAWeek));
+  const dayInEachWeek = new Date().getDay();
+  const forecastDays = WEEK_DAYS_LIST.slice(dayInEachWeek, WEEK_DAYS_LIST.length).concat(WEEK_DAYS_LIST.slice(0, dayInEachWeek));
   // rearrange days based on what day of the week it is
   return (
     <>
-      <label className="title">Daily</label>
+      <label className="titleBox">Daily</label>
       <Accordion allowZeroExpanded>
         {data.list.splice(0, 7).map((item, idx) => (
           <AccordionItem key={idx}>
             <AccordionItemHeading>
               <AccordionItemButton>
-                <div className="daily-item">
+                <div className="daily-weather">
                   <img src={`icons/${item.weather[0].icon}.png`} className="icon-small" alt="weather" />
                   <label className="day">{forecastDays[idx]}</label>
                   <label className="description">{item.weather[0].description}</label>
                   <label className="min-max">{Math.round(item.main.temp_max)}°F /{Math.round(item.main.temp_min)}°F</label>
-                </div>
+                </div>         
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
-              <div className="daily-details-grid">
-                <div className="daily-details-grid-item">
+              <div className="daily-details-All">
+                <div className="daily-details-item">
                   <label>Pressure:</label>
                   <label>{item.main.pressure}</label>
                 </div>
-                <div className="daily-details-grid-item">
+                <div className="daily-details-item">
                   <label>Humidity:</label>
                   <label>{item.main.humidity}</label>
                 </div>
-                <div className="daily-details-grid-item">
+                <div className="daily-details-item">
                   <label>Clouds:</label>
                   <label>{item.clouds.all}%</label>
                 </div>
-                <div className="daily-details-grid-item">
-                  <label>Wind speed:</label>
+                <div className="daily-details-item">
+                  <label>Wind Speed:</label>
                   <label>{item.wind.speed} m/s</label>
                 </div>
-                <div className="daily-details-grid-item">
+                <div className="daily-details-item">
+                  <label>Temp Feels like:</label>
+                  <label>{item.main.feels_like}°F</label>
+                </div>
+                <div className="daily-details-item">
                   <label>Sea level:</label>
                   <label>{item.main.sea_level}m</label>
-                </div>
-                <div className="daily-details-grid-item">
-                  <label>Feels like:</label>
-                  <label>{item.main.feels_like}°F</label>
                 </div>
               </div>
             </AccordionItemPanel>

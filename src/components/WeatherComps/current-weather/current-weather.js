@@ -3,15 +3,15 @@ import "./current-weather.css";
 
 const CurrentWeather = ({ data }) => {
   return (
-    <div className="weather">
-      <div className="top">
+    <div className="weatherPage">
+      <div className="topOfPage">
         <div>
-          <p className="city">{data.city}</p>
+          <p className="CurrentCity">{data.city}</p>
           <p className="weather-description">{data.weather[0].description}</p>
         </div>
         <img
           alt="weather"
-          className="weather-icon"
+          className="weather-image"
           src={`icons/${data.weather[0].icon}.png`} // pull image url based upon weather
         />
       </div>
